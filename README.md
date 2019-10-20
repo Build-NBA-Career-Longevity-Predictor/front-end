@@ -6,7 +6,7 @@ Read More on the [Technical Design Document](https://www.notion.so/Product-Visio
 
 [Trello Board](https://trello.com/b/UYMEvq33/nba-career-longevity-predictor)
 
-The React front end of the application is deployed [here]
+The React front end of the application is deployed [here](https://nba-clp.netlify.com)
 
 ## Motivation
 
