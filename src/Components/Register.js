@@ -19,7 +19,7 @@ const Register = () => {
     event.preventDefault();
     axios
       .post(`https://nbapredictor-backend.herokuapp.com/signup`, newRegister)
-      .then(response => {
+      .then(res => {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("token_type", res.data.token_type);
         localStorage.setItem("expires_in", res.data.expires_in);
