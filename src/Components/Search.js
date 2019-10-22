@@ -31,7 +31,7 @@ const Search = () => {
   };
 
   return (
-    <div style={{ color: "#000" }}>
+    <div className='search-player' style={{ color: "#000" }}>
       <Select
         value={selectedOption}
         onChange={e => handleChange(e)}
