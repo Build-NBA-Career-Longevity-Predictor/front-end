@@ -1,9 +1,11 @@
 import React from "react";
+import Search from "./Search";
 
 const PlayerList = () => {
   //Map over saved playerlist state and return a Player component for each player
   return (
     <div className='player-container'>
+      <Search />
       <div className='player-cards'>
         <div className='searched-player'>
           <h2>Stephen Curry</h2>
