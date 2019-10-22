@@ -28,8 +28,7 @@ const useStyles = makeStyles(theme => ({
     width: "50%",
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    paddingTop: "10%"
+    alignItems: "center"
   },
   Form: {
     background: "white",
@@ -61,7 +60,15 @@ const useStyles = makeStyles(theme => ({
   },
   Header: {
     fontFamily: "Oswald, sans-serif",
-    color: "white"
+    color: "white",
+    paddingTop: "20%",
+    paddingBottom: "5%",
+    fontSize: "42px"
+  },
+  subHeader: {
+    fontFamily: "Oswald, sans-serif",
+    color: "white",
+    fontSize: "30px"
   }
 }));
 
@@ -105,7 +112,8 @@ const Register = () => {
         />
       </div>
       <div className={classes.formContainer}>
-        <h1 className={classes.Header}>Start getting predictions now!</h1>
+        <h1 className={classes.Header}>NBA Career Longevity Predictor</h1>
+        <h2 className={classes.subHeader}>Start getting predictions now!</h2>
         <form className={classes.Form} onSubmit={handleSubmit}>
           <div>
             <Grid container spacing={1} alignItems="flex-end">
