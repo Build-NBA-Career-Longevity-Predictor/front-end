@@ -1,8 +1,23 @@
 .player-container {
-    max-width: 70%;
+    max-width: 65%;
     margin: 0 auto;
     margin-top: 3%;
     box-shadow: 0 6px 10px 6px rgba(0,0,0,0.3);
+    font-family: lato, sans-serif;
+}
+h1 {
+    margin: 0 auto;
+    padding-top: 1%;
+    text-align: center;
+    font-family: Oswald, sans-serif;
+    font-size: 2rem;
+    background-color: #242222;
+    color: white;
+}
+h2 {
+    font-family: Oswald, sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: .25mm;
 }
 .player-cards {
     display: flex;
