@@ -14,10 +14,26 @@ const PlayerList = () => {
           <p>College: Davidson</p>
         </div>
         <div className='stats-card'>
-          <h3>Points</h3>
-          <h3>Assists</h3>
-          <h3>Rebounds</h3>
-          <h3>Minutes Per Game</h3>
+          <div className='points'>
+            <p>26</p>
+            <h3>Points Per Game</h3>
+            <p>24</p>
+          </div>
+          <div className='assists'>
+            <p>5</p>
+            <h3>Assists Per Game</h3>
+            <p>2</p>
+          </div>
+          <div className='rebounds'>
+            <p>8</p>
+            <h3>Rebounds Per Game</h3>
+            <p>10</p>
+          </div>
+          <div className='minutes'>
+            <p>37</p>
+            <h3>Minutes Per Game</h3>
+            <p>36</p>
+          </div>
         </div>
         <div className='similar-player'>
           <h2>James Harden</h2>
