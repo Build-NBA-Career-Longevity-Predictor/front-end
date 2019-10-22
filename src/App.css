@@ -1,4 +1,48 @@
+.player-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding-top: 5%;
+}
 .player-cards {
     display: flex;
-    
+    justify-content: space-between;
+    text-align: center;
+    background-color: #242222;
+}
+.searched-player, .similar-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    color: white;
+}
+.searched-player {
+    background-color: #17408B;
+}
+.similar-player {
+    background-color: #C9082A;
+}
+.stats-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    color: white;
+    border-left: 1px solid #696969;
+    border-right: 1px solid #696969;
+    width: 40%;
+}
+
+.expected-years {
+    background-color: #242222;
+    color: white;
+    text-align: center;
+}
+
+.expected-years p {
+    margin: 0 auto;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
