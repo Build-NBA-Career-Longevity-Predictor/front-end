@@ -1,6 +1,7 @@
 .player-container {
     max-width: 70%;
     margin: 0 auto;
+    margin-top: 3%;
     box-shadow: 0 6px 10px 6px rgba(0,0,0,0.3);
 }
 .player-cards {
@@ -56,4 +57,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.top-container {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 2%;
+    background-color: #242222;
+}
+.search-player {
+    width: 70%;
+    margin: 0 auto;
+}
+.saved-player {
+    width: 20%;
+    margin: 0 auto;
 }
