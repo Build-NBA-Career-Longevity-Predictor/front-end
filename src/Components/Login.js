@@ -97,7 +97,7 @@ const Login = () => {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("token_type", res.data.toekn_type);
         localStorage.setItem("expires_in", res.data.expires_in);
-        history.push("/playerlist");
+        history.push("/");
       })
       .catch(err => console.error(err.message));
   };

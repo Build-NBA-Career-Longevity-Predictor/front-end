@@ -7,6 +7,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import registerbg from "../Assests/Images/registerbg.jpg";
 
@@ -78,6 +79,7 @@ const Register = () => {
     password: "",
     email: ""
   });
+  const history = useHistory();
   const classes = useStyles();
 
   const changeHandler = event => {
@@ -89,13 +91,14 @@ const Register = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log("ran");
+
     axios
       .post(`https://nbapredictor-backend.herokuapp.com/signup`, newRegister)
       .then(res => {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("token_type", res.data.token_type);
         localStorage.setItem("expires_in", res.data.expires_in);
+        history.push("/");
       })
       .catch(error => console.error(error));
 

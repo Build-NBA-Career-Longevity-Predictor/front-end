@@ -5,16 +5,23 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Register from "./Components/Register";
 import Login from "./Components/Login";
 import PlayerList from "./Components/PlayerList";
+import PrivateRoute from "./Components/PrivateRoute";
+import Navbar from "./Components/Navbar";
 import "./App.css";
 
 function App() {
   //Everything related to react routes here
   return (
-    <div className="App">
+    <div className="App" style={{ display: "flex", width: "100%" }}>
       <Router>
-        <Route exact path="/" component={Register} />
-        <Route path="/login" component={Login} />
-        <Route path="/playerlist" component={PlayerList} />
+        <div style={{ width: "15%", background: "#C9082A" }}>
+          <Navbar />
+        </div>
+        <div>
+          <PrivateRoute exact path="/" component={PlayerList} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+        </div>
       </Router>
     </div>
   );

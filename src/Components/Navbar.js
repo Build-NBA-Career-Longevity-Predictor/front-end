@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: "18%",
     height: "80vh",
     maxHeight: "100%",
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#C9082A",
     // border: "4px solid #17408B",
     fontSize: "14px",
     fontFamily: "Lato"
