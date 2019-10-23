@@ -165,7 +165,7 @@ const Login = () => {
             Login!
           </Button>
           <p>
-            Don't have an account? <Link to="/">Sign up now!</Link>
+            Don't have an account? <Link to="/register">Sign up now!</Link>
           </p>
         </form>
       </div>
