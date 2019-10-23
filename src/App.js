@@ -19,11 +19,9 @@ function App() {
         <div style={{ width: "15%", background: "#C9082A" }}>
           <Navbar />
         </div>
-        <div>
           <PrivateRoute exact path="/" component={PlayerList} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-        </div>
       </Router>
     </div>
   );
