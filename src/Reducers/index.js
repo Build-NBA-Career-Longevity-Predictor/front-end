@@ -1,8 +1,5 @@
-const initialState = {};
+import { combineReducers } from "redux";
+import { userReducer } from "./userReducer";
+import { playersReducer } from "./playersReducer";
 
-export const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+export const reducer = combineReducers({ userReducer, playersReducer });
