@@ -13,13 +13,16 @@ import "./App.css";
 function App() {
   //Everything related to react routes here
   return (
-    <div className="App" style={{ display: "flex", width: "100%" }}>
+    <div
+      className="App"
+      style={{ display: "flex", width: "100%", overflowY: "hidden" }}
+    >
       <Router history={history}>
         <div
           style={{
             width: "13%",
             background: "#C9082A",
-            height: window.innerHeight
+            height: "100vh"
           }}
         >
           <Navbar />
@@ -27,7 +30,7 @@ function App() {
         <div
           style={{
             width: "87%",
-            height: window.innerHeight
+            height: "100vh"
           }}
         >
           <PrivateRoute exact path="/" component={PlayerList} />
