@@ -23,22 +23,22 @@ const PlayerList = () => {
         <div className='stats-card'>
           <div className='points'>
             <p>26</p>
-            <h3>Points Per Game</h3>
+            <h3 className="stats">POINTS PER GAME</h3>
             <p>24</p>
           </div>
           <div className='assists'>
             <p>5</p>
-            <h3>Assists Per Game</h3>
+            <h3 className="stats">ASSISTS PER GAME</h3>
             <p>2</p>
           </div>
           <div className='rebounds'>
             <p>8</p>
-            <h3>Rebounds Per Game</h3>
+            <h3 className="stats">REBOUNDS PER GAME</h3>
             <p>10</p>
           </div>
           <div className='minutes'>
             <p>37</p>
-            <h3>Minutes Per Game</h3>
+            <h3 className="stats">MINUTES PER GAME</h3>
             <p>36</p>
           </div>
         </div>
