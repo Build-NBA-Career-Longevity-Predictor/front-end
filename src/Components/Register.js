@@ -8,7 +8,9 @@ import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { registerUser } from "../Actions/userActions";
 import registerbg from "../Assests/Images/registerbg.jpg";
 
 const useStyles = makeStyles(theme => ({
@@ -81,6 +83,8 @@ const Register = () => {
   });
   const history = useHistory();
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const state = useSelector(state => state.userReducer);
 
   const changeHandler = event => {
     setNewRegister({
@@ -91,18 +95,8 @@ const Register = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
-
-    axios
-      .post(`https://nbapredictor-backend.herokuapp.com/signup`, newRegister)
-      .then(res => {
-        localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("token_type", res.data.token_type);
-        localStorage.setItem("expires_in", res.data.expires_in);
-        history.push("/");
-      })
-      .catch(error => console.error(error));
-
-    setNewRegister({ username: "", password: "", email: "" });
+    dispatch(registerUser(newRegister));
+    //setNewRegister({ username: "", password: "", email: "" });
   };
 
   return (
@@ -183,6 +177,7 @@ const Register = () => {
             type="submit"
             variant="contained"
             color="primary"
+            disabled={state.isRegistering}
             className={classes.Button}
           >
             Sign Up!
