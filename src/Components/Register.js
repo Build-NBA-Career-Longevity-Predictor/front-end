@@ -96,7 +96,6 @@ const Register = () => {
   const handleSubmit = event => {
     event.preventDefault();
     dispatch(registerUser(newRegister));
-    //setNewRegister({ username: "", password: "", email: "" });
   };
 
   return (
