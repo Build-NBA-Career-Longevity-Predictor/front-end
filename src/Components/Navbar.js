@@ -13,10 +13,11 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import SearchIcon from "@material-ui/icons/Search";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import Tooltip from "@material-ui/core/Tooltip";
 import nbaclplogo from "../Assests/Images/nbaclplogo.png";
+
+import Player from "./Player";
+
+const savedPlayerList = ["Donovan Mitchell", "Rudy Gobert", "Joe Ingles"];
 
 const useStyles = makeStyles(theme => ({
   Container: {
@@ -138,29 +139,9 @@ export default function Navbar() {
         </ListItem>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List>
-            <ListItem disableGutters button className={classes.nested}>
-              <ListItemText
-                primary="Michael Jordan"
-                classes={{ primary: classes.nestedText }}
-              />
-
-              <ListItemIcon classes={{ root: classes.editIcon }}>
-                <Tooltip disableFocusListener disableTouchListener title="Edit">
-                  <EditIcon style={{ fontSize: "24px" }} />
-                </Tooltip>
-              </ListItemIcon>
-              <ListItemIcon classes={{ root: classes.deleteIcon }}>
-                <Tooltip
-                  disableFocusListener
-                  disableTouchListener
-                  title="Delete"
-                >
-                  <DeleteIcon style={{ fontSize: "24px" }} />
-                </Tooltip>
-              </ListItemIcon>
-            </ListItem>
-          </List>
+          {savedPlayerList.map(player => (
+            <Player key={player.id} player={player} />
+          ))}
         </Collapse>
       </List>
     );
