@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -17,6 +18,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
 import Tooltip from "@material-ui/core/Tooltip";
 import nbaclplogo from "../Assests/Images/nbaclplogo.png";
+import { logoutUser } from "../Actions/userActions";
+import history from "../History/history";
 
 const useStyles = makeStyles(theme => ({
   Container: {
@@ -63,7 +66,8 @@ const useStyles = makeStyles(theme => ({
 
 export default function Navbar() {
   const classes = useStyles();
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const state = useSelector(state => state.userReducer);
   const [open, setOpen] = useState(false);
 
   const handleClick = () => {
@@ -71,8 +75,7 @@ export default function Navbar() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    history.push("/login");
+    dispatch(logoutUser());
   };
 
   const renderLoginRegister = () => {
@@ -172,8 +175,8 @@ export default function Navbar() {
         <img src={nbaclplogo} alt="logo" className={classes.logo} />
       </Link>
       <div className={classes.Container}>
-        {localStorage.getItem("token") ? renderSearch() : <p></p>}
-        {localStorage.getItem("token") ? renderLogout() : renderLoginRegister()}
+        {state.userLogged ? renderSearch() : <p></p>}
+        {state.userLogged ? renderLogout() : renderLoginRegister()}
       </div>
     </>
   );
