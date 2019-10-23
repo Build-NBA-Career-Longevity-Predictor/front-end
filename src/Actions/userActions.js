@@ -81,3 +81,27 @@ export const deletePlayer = id => dispatch => {
     .then(res => dispatch({ type: DELETEPLAYER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETEPLAYER_FAILURE, payload: err }));
 };
+
+export const START_SAVEPLAYER = "START_SAVEPLAYER";
+export const SAVEPLAYER_SUCCESS = "SAVEPLAYER_SUCCESS";
+export const SAVEPLAYER_FAILURE = "SAVEPLAYER_FAILURE";
+export const savePlayer = player => dispatch => {
+  dispatch({ type: START_SAVEPLAYER });
+
+  axiosWithAuth()
+    .post(`players/createplayer`, player)
+    .then(res => dispatch({ type: SAVEPLAYER_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: SAVEPLAYER_FAILURE, payload: err }));
+};
+
+export const START_EDITPLAYER = "START_EDITPLAYER";
+export const EDITPLAYER_SUCCESS = "EDITPLAYER_SUCCESS";
+export const EDITPLAYER_FAILURE = "EDITPLAYER_FAILURE";
+export const editPlayer = (id, player) => dispatch => {
+  dispatch({ type: START_EDITPLAYER });
+
+  axiosWithAuth()
+    .put(`/players/update/${id}`, player)
+    .then(res => dispatch({ type: EDITPLAYER_SUCCESS, payload: res.data }))
+    .catch(err => dispatch({ type: EDITPLAYER_FAILURE, payload: err }));
+};
