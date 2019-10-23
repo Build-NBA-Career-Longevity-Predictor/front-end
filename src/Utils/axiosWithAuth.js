@@ -6,7 +6,7 @@ export const axiosWithAuth = () => {
   return axios.create({
     baseURL: "https://nbapredictor-backend.herokuapp.com/",
     headers: {
-      Authorization: `bearer ${token}`
+      Authorization: `Bearer ${token}`
     }
   });
 };
