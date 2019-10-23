@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -8,7 +7,8 @@ import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import loginbg from "../Assests/Images/loginbg.jpg";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../Actions/userActions";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -73,34 +73,18 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Login = () => {
-  //Login Form here
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const state = useSelector(state => state.userReducer);
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    axios
-      .post(
-        "https://nbapredictor-backend.herokuapp.com/login",
-        `grant_type=password&username=${username}&password=${password}`,
-        {
-          headers: {
-            Authorization: `Basic ${btoa("lambda-client:lambda-secret")}`,
-            "Content-Type": "application/x-www-form-urlencoded"
-          }
-        }
-      )
-      .then(res => {
-        localStorage.setItem("token", res.data.access_token);
-        localStorage.setItem("token_type", res.data.toekn_type);
-        localStorage.setItem("expires_in", res.data.expires_in);
-        history.push("/");
-      })
-      .catch(err => console.error(err.message));
+    dispatch(loginUser(username, password));
   };
+
+  console.log(state);
 
   return (
     <div className={classes.container}>
@@ -160,6 +144,7 @@ const Login = () => {
             type="submit"
             variant="contained"
             color="primary"
+            disabled={state.isLogging}
             className={classes.Button}
           >
             Login!
