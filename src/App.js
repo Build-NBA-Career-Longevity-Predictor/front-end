@@ -22,7 +22,8 @@ function App() {
           style={{
             width: "13%",
             background: "#C9082A",
-            height: "100vh"
+            height: "100vh",
+            boxShadow: "-5px 0px 2px -3px white inset"
           }}
         >
           <Navbar />
@@ -30,7 +31,8 @@ function App() {
         <div
           style={{
             width: "87%",
-            height: "100vh"
+            height: "100vh",
+            background: "#17408B"
           }}
         >
           <PrivateRoute exact path="/" component={PlayerList} />
