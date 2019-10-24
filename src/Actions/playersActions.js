@@ -43,7 +43,9 @@ export const FETCHPLAYERSLIST_FAILURE = "FETCHPLAYERSLIST_FAILURE";
 export const fetchPlayerList = () => dispatch => {
   dispatch({ type: START_FETCHPLAYERSLIST });
   axios
-    .get("http://nba-pred.herokuapp.com/players")
+    .get(
+      "https://cors-anywhere.herokuapp.com/http://nba-pred.herokuapp.com/players"
+    )
     .then(res =>
       dispatch({ type: FETCHPLAYERSLIST_SUCCESS, payload: res.data.flat() })
     )
@@ -57,7 +59,9 @@ export const fetchStats = name => dispatch => {
   dispatch({ type: START_FETCHSTATS });
 
   axiosWithAuth()
-    .get(`http://nba-pred.herokuapp.com/${name}`)
+    .get(
+      `https://cors-anywhere.herokuapp.com/http://nba-pred.herokuapp.com/${name}`
+    )
     .then(res =>
       dispatch({ type: FETCHSTATS_SUCCESS, payload: convertData(res.data) })
     )
