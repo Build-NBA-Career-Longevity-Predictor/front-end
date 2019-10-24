@@ -109,3 +109,12 @@
     font-size: .9rem;
     color: #696969;
 }
+
+.player-cards {
+    display: flex;
+    justify-content: center;
+}
+
+.player-cards h2 {
+    color: white;
+}
