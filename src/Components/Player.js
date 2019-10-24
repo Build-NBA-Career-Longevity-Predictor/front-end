@@ -38,7 +38,7 @@ const Player = ({ player }) => {
   const dispatch = useDispatch();
 
   // {player.name.length > 20 ? player.name : result}
-  const short = player.name.slice(0, 20);
+  const short = player.name;
   const long = player.name.slice(0, 17) + "...";
 
   const handleClick = () => {
