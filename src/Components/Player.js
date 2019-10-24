@@ -37,6 +37,10 @@ const Player = ({ player }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  // {player.name.length > 20 ? player.name : result}
+  const short = player.name.slice(0, 20);
+  const long = player.name.slice(0, 17) + "...";
+
   const handleClick = () => {
     dispatch(fetchPlayer(player.playerid));
   };
@@ -61,7 +65,7 @@ const Player = ({ player }) => {
           onClick={handleClick}
         >
           <ListItemText
-            primary={player.name}
+            primary={player.name.length < 20 ? short : long}
             classes={{ primary: classes.nestedText }}
           />
           <ListItemIcon
