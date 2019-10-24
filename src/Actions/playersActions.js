@@ -16,7 +16,7 @@ const convertData = data => {
     rebounds_pg: data[0].trb_pg,
     assists_pg: data[0].ast_pg,
     mins_pg: data[0].min_pg,
-    prediction: data[0].pred_yrs,
+    prediction: Math.round(data[0].pred_yrs),
     similarplayers: [
       {
         imgurl: data[1].img,
