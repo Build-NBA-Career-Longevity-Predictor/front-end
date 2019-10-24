@@ -3,6 +3,7 @@ import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { savePlayer, fetchSavedPlayers } from "../Actions/userActions";
 import { makeStyles } from "@material-ui/core/styles";
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles(theme => ({
   Button: {
@@ -19,6 +20,7 @@ const useStyles = makeStyles(theme => ({
 const SavedPlayer = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
   const currentPlayer = useSelector(
     state => state.playersReducer.currentPlayer
   );
@@ -34,7 +36,13 @@ const SavedPlayer = () => {
     ).length;
 
     if (samePlayer > 0) {
-      console.log("Already have that player saved");
+      enqueueSnackbar(`${currentPlayer.name} is already saved in your list.`, {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center"
+        }
+      });
     } else {
       dispatch(savePlayer(currentPlayer));
     }
