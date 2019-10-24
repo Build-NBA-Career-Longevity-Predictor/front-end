@@ -59,7 +59,7 @@ const EditPlayer = props => {
         classes={{ root: classes.closeIcon }}
         onClick={() => props.setIsEditing(false)}
       >
-        <Tooltip disableFocusListener disableTouchListener title="Edit">
+        <Tooltip disableFocusListener disableTouchListener title="Cancel">
           <CloseIcon style={{ fontSize: "24px" }} />
         </Tooltip>
       </ListItemIcon>
@@ -68,7 +68,7 @@ const EditPlayer = props => {
         classes={{ root: classes.doneIcon }}
         onClick={handleSubmit}
       >
-        <Tooltip disableFocusListener disableTouchListener title="Delete">
+        <Tooltip disableFocusListener disableTouchListener title="Accept">
           <DoneIcon style={{ fontSize: "24px" }} />
         </Tooltip>
       </ListItemIcon>
