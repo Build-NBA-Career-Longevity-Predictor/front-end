@@ -118,3 +118,8 @@
 .player-cards h2 {
     color: white;
 }
+
+.player-cards img {
+    max-width: 120px;
+    max-height: 180px;
+}

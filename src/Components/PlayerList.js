@@ -56,7 +56,7 @@ const PlayerList = () => {
           </div>
         </div>
         <div className="expected-years">
-          <p> {state.currentPlayer.name} is expected to be in the NBA for {state.currentPlayer.prediction} years.</p>
+          <p> {state.currentPlayer.name} is expected to be in the NBA for {Math.round(state.currentPlayer.prediction)} years.</p>
         </div>
       </div>
     );
