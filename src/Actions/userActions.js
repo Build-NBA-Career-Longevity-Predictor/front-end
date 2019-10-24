@@ -77,7 +77,7 @@ export const deletePlayer = id => dispatch => {
   dispatch({ type: START_DELETEPLAYER });
 
   axiosWithAuth()
-    .get(`players/${id}`)
+    .delete(`players/delete/${id}`)
     .then(res => dispatch({ type: DELETEPLAYER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: DELETEPLAYER_FAILURE, payload: err }));
 };
