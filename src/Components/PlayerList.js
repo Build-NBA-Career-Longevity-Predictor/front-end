@@ -15,12 +15,15 @@ const PlayerList = () => {
           <Search />
           <SavedPlayer />
         </div>
+        <div className="expected-years">
+          <h3> {state.currentPlayer.name} is expected to be in the NBA for &nbsp;<p>{Math.round(state.currentPlayer.prediction)} years.</p></h3>
+        </div>
         <div className="player-cards">
           <div className="searched-player">
             <h2>{state.currentPlayer.name}</h2>
             <img src={state.currentPlayer.imgurl} alt="current player"></img>
             <p>{state.currentPlayer.position}</p>
-            <p>{state.currentPlayer.height}</p>
+            <p>{state.currentPlayer.height.replace("-", "' ")+'"'}</p>
             <p>{state.currentPlayer.weight}</p>
             <p>College: {state.currentPlayer.college}</p>
           </div>
@@ -50,13 +53,10 @@ const PlayerList = () => {
             <h2>{state.currentPlayer.similarplayers[0].name}</h2>
             <img src={state.currentPlayer.similarplayers[0].imgurl} alt="similar player"></img>
             <p>{state.currentPlayer.similarplayers[0].position}</p>
-            <p>{state.currentPlayer.similarplayers[0].height}</p>
+            <p>{state.currentPlayer.similarplayers[0].height.replace("-", "' ")+'"'}</p>
             <p>{state.currentPlayer.similarplayers[0].weight}</p>
             <p>College:  {state.currentPlayer.similarplayers[0].college}</p>
           </div>
-        </div>
-        <div className="expected-years">
-          <p> {state.currentPlayer.name} is expected to be in the NBA for {state.currentPlayer.prediction} years.</p>
         </div>
       </div>
     );
