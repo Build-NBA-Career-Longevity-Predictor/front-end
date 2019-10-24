@@ -4,33 +4,49 @@ import {
   FETCHPLAYERSLIST_SUCCESS,
   START_FETCHPLAYER,
   FETCHPLAYER_FAILURE,
-  FETCHPLAYER_SUCCESS
+  FETCHPLAYER_SUCCESS,
+  START_FETCHSTATS,
+  FETCHSTATS_FAILURE,
+  FETCHSTATS_SUCCESS
 } from "../Actions/playersActions";
-import {
-  FETCHPLAYERS_SUCCESS,
-  FETCHPLAYERS_FAILURE
-} from "../Actions/userActions";
 
 const initialState = {
   playerList: [],
-  currentPlayer: {},
+  currentPlayer: null,
   isFetchingList: false,
   errorFetchList: null,
   isFetchingPlayer: false,
-  errorFetchPlayer: null
+  errorFetchPlayer: null,
+  isFetchingStats: false,
+  errorFetchStats: null
 };
 
 export const playersReducer = (state = initialState, action) => {
   switch (action.type) {
     case START_FETCHPLAYERSLIST:
       return { ...state, errorFetchList: null, isFetchingList: true };
-    case FETCHPLAYERS_SUCCESS:
+    case FETCHPLAYERSLIST_SUCCESS:
       return { ...state, playerList: action.payload, isFetchingList: false };
-    case FETCHPLAYERS_FAILURE:
+    case FETCHPLAYERSLIST_FAILURE:
       return {
         ...state,
         errorFetchList: action.payload,
         isFetchingList: false
+      };
+
+    case START_FETCHSTATS:
+      return { ...state, errorFetchStats: null, isFetchingStats: true };
+    case FETCHSTATS_SUCCESS:
+      return {
+        ...state,
+        isFetchingStats: false,
+        currentPlayer: action.payload
+      };
+    case FETCHSTATS_FAILURE:
+      return {
+        ...state,
+        isFetchingStats: false,
+        errorFetchStats: action.payload
       };
 
     case START_FETCHPLAYER:
@@ -47,6 +63,7 @@ export const playersReducer = (state = initialState, action) => {
         isFetchingPlayer: false,
         errorFetchPlayer: action.payload
       };
+
     default:
       return state;
   }
