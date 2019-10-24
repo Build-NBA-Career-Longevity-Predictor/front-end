@@ -7,9 +7,7 @@ import EmailIcon from "@material-ui/icons/Email";
 import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
 import { registerUser } from "../Actions/userActions";
 import registerbg from "../Assests/Images/registerbg.jpg";
 
@@ -81,7 +79,6 @@ const Register = () => {
     password: "",
     email: ""
   });
-  const history = useHistory();
   const classes = useStyles();
   const dispatch = useDispatch();
   const state = useSelector(state => state.userReducer);

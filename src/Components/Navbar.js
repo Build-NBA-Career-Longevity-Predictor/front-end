@@ -14,11 +14,9 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 import SearchIcon from "@material-ui/icons/Search";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import Tooltip from "@material-ui/core/Tooltip";
 import nbaclplogo from "../Assests/Images/nbaclplogo.png";
 import { logoutUser } from "../Actions/userActions";
+import Player from "./Player";
 import history from "../History/history";
 
 const useStyles = makeStyles(theme => ({
@@ -27,23 +25,6 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between"
-  },
-  nested: {
-    paddingLeft: theme.spacing(2)
-  },
-  nestedText: {
-    color: "white",
-    fontSize: "18px",
-    fontFamily: "Lato, sans-serif"
-  },
-  editIcon: {
-    minWidth: "24px",
-    color: "white",
-    marginRight: "5px"
-  },
-  deleteIcon: {
-    minWidth: "24px",
-    color: "white"
   },
   logo: {
     width: "100px",
@@ -141,29 +122,9 @@ export default function Navbar() {
         </ListItem>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <List>
-            <ListItem disableGutters button className={classes.nested}>
-              <ListItemText
-                primary="Michael Jordan"
-                classes={{ primary: classes.nestedText }}
-              />
-
-              <ListItemIcon classes={{ root: classes.editIcon }}>
-                <Tooltip disableFocusListener disableTouchListener title="Edit">
-                  <EditIcon style={{ fontSize: "24px" }} />
-                </Tooltip>
-              </ListItemIcon>
-              <ListItemIcon classes={{ root: classes.deleteIcon }}>
-                <Tooltip
-                  disableFocusListener
-                  disableTouchListener
-                  title="Delete"
-                >
-                  <DeleteIcon style={{ fontSize: "24px" }} />
-                </Tooltip>
-              </ListItemIcon>
-            </ListItem>
-          </List>
+          {state.savedPlayers.map(player => (
+            <Player key={player.id} player={player} />
+          ))}
         </Collapse>
       </List>
     );
