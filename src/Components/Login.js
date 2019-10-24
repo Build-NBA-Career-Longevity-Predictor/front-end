@@ -84,8 +84,6 @@ const Login = () => {
     dispatch(loginUser(username, password));
   };
 
-  console.log(state);
-
   return (
     <div className={classes.container}>
       <div className={classes.imgContainer}>
