@@ -6,12 +6,15 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { reducer } from "./Reducers";
+import { SnackbarProvider } from "notistack";
 
 const store = createStore(reducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <SnackbarProvider>
+      <App />
+    </SnackbarProvider>
   </Provider>,
   document.getElementById("root")
 );

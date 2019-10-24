@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,8 @@ import LockIcon from "@material-ui/icons/Lock";
 import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import { useSelector, useDispatch } from "react-redux";
-import { registerUser } from "../Actions/userActions";
+import { registerUser, clearErrors } from "../Actions/userActions";
+import { useSnackbar } from "notistack";
 import registerbg from "../Assests/Images/registerbg.jpg";
 
 const useStyles = makeStyles(theme => ({
@@ -82,6 +83,21 @@ const Register = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const state = useSelector(state => state.userReducer);
+  const errorMsg = useSelector(state => state.userReducer.errorRegister);
+  const { enqueueSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (errorMsg) {
+      enqueueSnackbar(errorMsg.message, {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center"
+        }
+      });
+      setTimeout(() => dispatch(clearErrors()), 2000);
+    }
+  }, [errorMsg, enqueueSnackbar, dispatch]);
 
   const changeHandler = event => {
     setNewRegister({

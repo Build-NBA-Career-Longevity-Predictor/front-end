@@ -19,7 +19,8 @@ import {
   SAVEPLAYER_SUCCESS,
   START_EDITPLAYER,
   EDITPLAYER_FAILURE,
-  EDITPLAYER_SUCCESS
+  EDITPLAYER_SUCCESS,
+  CLEAR_ERRORS
 } from "../Actions/userActions";
 
 const initialState = {
@@ -91,6 +92,18 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, isEditing: false, savedPlayers: action.payload };
     case EDITPLAYER_FAILURE:
       return { ...state, isEditing: false, errorEditing: action.payload };
+
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        errorLogin: null,
+        errorLogout: null,
+        errorRegister: null,
+        errorDeleting: null,
+        errorFetching: null,
+        errorEditing: null,
+        errorSaving: null
+      };
 
     default:
       return state;

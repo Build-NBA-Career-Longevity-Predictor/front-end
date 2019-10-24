@@ -105,3 +105,6 @@ export const editPlayer = (id, player) => dispatch => {
     .then(res => dispatch({ type: EDITPLAYER_SUCCESS, payload: res.data }))
     .catch(err => dispatch({ type: EDITPLAYER_FAILURE, payload: err }));
 };
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const clearErrors = () => ({ type: CLEAR_ERRORS });

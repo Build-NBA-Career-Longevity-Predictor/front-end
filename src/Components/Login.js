@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import { makeStyles } from "@material-ui/core/styles";
 import loginbg from "../Assests/Images/loginbg.jpg";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../Actions/userActions";
+import { loginUser, clearErrors } from "../Actions/userActions";
+import { useSnackbar } from "notistack";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -77,12 +78,27 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const state = useSelector(state => state.userReducer);
+  const errorMsg = useSelector(state => state.userReducer.errorLogin);
+  const { enqueueSnackbar } = useSnackbar();
   const classes = useStyles();
 
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(loginUser(username, password));
   };
+  // console.log(errorMsg.response.data.errordescription);
+  useEffect(() => {
+    if (errorMsg) {
+      enqueueSnackbar(errorMsg.message, {
+        variant: "error",
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center"
+        }
+      });
+      setTimeout(() => dispatch(clearErrors()), 2000);
+    }
+  }, [errorMsg, enqueueSnackbar, dispatch]);
 
   return (
     <div className={classes.container}>
